@@ -25,6 +25,7 @@ RawData/
 ### 1. 安装依赖
 ```bash
 pip install torch transformers pandas
+、、、
 
 ### 2. 准备数据
 将数据集放入 `RawData/` 文件夹

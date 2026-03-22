@@ -13,10 +13,13 @@
 * 🔑 提取码：`1111`
 
 下载后将数据放入：
+
+```
 RawData/
 ├── train_3k.txt
 ├── dev_1k.txt
 ├── test_1k.txt
+```
 
 ---
 

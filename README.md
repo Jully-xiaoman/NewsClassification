@@ -32,5 +32,6 @@ pip install torch transformers pandas
 将数据集放入 RawData/ 文件夹。
 
 ### 3. 运行训练
+```bash
 python train_model.py
-
+```

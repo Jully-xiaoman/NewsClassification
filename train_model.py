@@ -1,6 +1,6 @@
 import torch
 import json
-from transformers import BertForSequenceClassification
+from model import create_model
 from data_module import create_datasets_and_loaders
 
 with open("args.json", "r", encoding="utf-8") as f:
@@ -11,10 +11,8 @@ train_dataloader, dev_dataloader, test_dataloader, label2id, id2label = create_d
 
 # 7.加载模型，准备优化器
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = BertForSequenceClassification.from_pretrained(
-    "bert-base-chinese",
-    num_labels=15
-)
+model = create_model(config)
+model.to(device)
 model.to(device)
 optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
 

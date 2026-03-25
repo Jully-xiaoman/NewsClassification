@@ -1,22 +1,5 @@
 import torch
-import json
-from model import create_model
-from data_module import create_datasets_and_loaders
 
-with open("args.json", "r", encoding="utf-8") as f:
-    config = json.load(f)
-
-# 1.数据接口
-train_dataloader, dev_dataloader, test_dataloader, label2id, id2label = create_datasets_and_loaders(config)
-
-# 2.加载模型，准备优化器
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = create_model(config)
-model.to(device)
-model.to(device)
-optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
-
-# 8.定义评估函数
 def evaluate(model, dataloader, device):
     model.eval()  # 切换到评估模式，关闭dropout
 

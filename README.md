@@ -36,5 +36,5 @@ pip install torch transformers pandas
 
 ### 3. 运行训练
 ```bash
-python trainer.py
+python main.py
 ```

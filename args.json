@@ -1,4 +1,4 @@
-{
+{ "model_path": "./model/model/bert-base-chinese",
   "train_path": "./RawData/train_3k.txt",
   "dev_path": "./RawData/dev_1k.txt",
   "test_path": "./RawData/test_1k.txt",

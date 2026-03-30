@@ -15,7 +15,8 @@ def evaluate(model, dataloader, device):
 
             outputs = model(
                 input_ids=input_ids,
-                attention_mask=attention_mask
+                attention_mask=attention_mask,
+                labels=labels
             )
 
             logits = outputs.logits  # (batch_size, num_labels)

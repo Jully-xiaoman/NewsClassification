@@ -3,11 +3,25 @@ import json
 from model import create_model
 from data_module import create_datasets_and_loaders
 from trainer import train, test
+import swanlab
+
 
 def main():
     # 1.读取配置
     with open("args.json", "r", encoding="utf-8") as f:
         config = json.load(f)
+
+    # 额外添加swanlab保存模型的指标
+    run = swanlab.init(
+        project="text-classification",
+        experiment_name="exp1",
+        config={
+            "lr": config["lr"],
+            "batch_size": config["batch_size"],
+            "epochs": config["epochs"],
+            "max_length": config["max_length"]
+        }
+    )
 
     # 2.数据
     train_dataloader, dev_dataloader, test_dataloader, _, _ = create_datasets_and_loaders(config)

@@ -19,11 +19,11 @@ def evaluate(model, dataloader, device):
             )
 
             logits = outputs.logits  # (batch_size, num_labels)
-
+            loss = outputs.loss
             # 取最大值的类别作为预测结果
             # 按行返回最大值的下标，dim=1表示按照行
             preds = torch.argmax(logits, dim=1)
-
+            total_loss += loss.item()
             # 统计正确数量
             # .sum()：等于1的地方全部加起来
             total_correct += (preds == labels).sum().item()

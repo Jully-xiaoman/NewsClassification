@@ -1,4 +1,5 @@
 import torch
+import swanlab
 
 def evaluate(model, dataloader, device):
     model.eval()  # 切换到评估模式，关闭dropout
@@ -63,6 +64,14 @@ def train(model, train_dataloader, dev_dataloader, optimizer, device, config):
 
         avg_train_loss = total_loss / len(train_dataloader)
         dev_acc, dev_loss = evaluate(model, dev_dataloader, device)
+
+        # 记录每个 epoch 的训练/验证指标
+        swanlab.log({
+            "epoch": epoch + 1,
+            "train/epoch_loss": avg_train_loss,
+            "dev/loss": dev_loss,
+            "dev/acc": dev_acc
+        })
 
         print(f"Epoch {epoch+1}, Train Loss: {avg_train_loss:.4f}")
         print(f"Dev Loss: {dev_loss:.4f}, Dev Acc: {dev_acc:.4f}")

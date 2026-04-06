@@ -30,11 +30,15 @@ RawData/
 conda env create -f ./environment.yml
 ```
 
-### 2. 准备数据
+### 2. 准备模型
+```bash
+python ./model/download.py
+```
 
-将数据集放入 RawData/ 文件夹。
+**### 3. 准备数据
+将数据集放入 RawData/ 文件夹。**
 
-### 3. 运行训练
+### 4. 运行训练
 ```bash
 python main.py
 ```

@@ -15,12 +15,7 @@ def main():
     run = swanlab.init(
         project="text-classification",
         experiment_name="exp1",
-        config={
-            "lr": config["lr"],
-            "batch_size": config["batch_size"],
-            "epochs": config["epochs"],
-            "max_length": config["max_length"]
-        }
+        config=config
     )
 
     # 2.数据

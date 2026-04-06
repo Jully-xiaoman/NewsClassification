@@ -2,7 +2,7 @@ import torch
 import json
 from model import create_model
 from data_module import create_datasets_and_loaders
-from trainer import train, test
+from trainer import Trainer
 import swanlab
 
 
@@ -32,10 +32,10 @@ def main():
     optimizer = torch.optim.AdamW(model.parameters(), lr=config["lr"])
 
     # 6.训练
-    train(model, train_dataloader, dev_dataloader, optimizer, device, config)
+    Trainer.train(model, train_dataloader, dev_dataloader, optimizer, device, config)
 
     # 7.测试
-    test(model, test_dataloader, device, config)
+    Trainer.test(model, test_dataloader, device, config)
 
 
 if __name__ == "__main__":

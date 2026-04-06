@@ -27,7 +27,7 @@ RawData/
 
 ### 1. 安装依赖
 ```bash
-pip install torch transformers pandas
+conda env create -f ./environment.yml
 ```
 
 ### 2. 准备数据

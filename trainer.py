@@ -88,7 +88,12 @@ class Trainer:
 
             if dev_acc > best_dev_acc:
                 best_dev_acc = dev_acc
-                torch.save(self.model.state_dict(), self.config["best_model_path"])
+                torch.save({
+                    "epoch": epoch + 1,
+                    "model_state_dict": self.model.state_dict(),
+                    "optimizer_state_dict": self.optimizer.state_dict(),
+                    "best_dev_acc": best_dev_acc,
+                }, self.config["best_model_path"])
                 print("最佳模型已保存！")
 
     def test(self, test_dataloader):
